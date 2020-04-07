@@ -1,15 +1,14 @@
 <template>
     <v-card id="box" class="pa-0 ma-1">
         <v-layout column fill-height class="justify-center align-center pa-0 ma-0">
-            <h2 class="main-color center">Total Confirmed</h2>
-            <h1 class="red-color center" style="font-size: 48px;">{{total}}</h1>
+            <img src="https://img.cartoongoodies.com/wp-content/uploads/2019/11/Dora-the-Explorer-Map.png"/>
         </v-layout>
     </v-card>
 </template>
 
 <script>
 export default {
-    name: "TotalConfirmed",
+    name: "Map",
     props: ["data"],
     data: function() {
         return {
