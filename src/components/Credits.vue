@@ -1,15 +1,14 @@
 <template>
     <v-card id="box" class="pa-0 ma-1">
-        <v-layout column fill-height class="justify-center align-center pa-0 ma-0">
-            <h2 class="main-color center">Total Confirmed</h2>
-            <h1 class="red-color center" style="font-size: 48px;">{{total}}</h1>
+        <v-layout column fill-height class="pa-0 ma-0 ma-2">
+            <span class="main-color">kuck filian</span>
         </v-layout>
     </v-card>
 </template>
 
 <script>
 export default {
-    name: "TotalConfirmed",
+    name: "Credits",
     props: ["data"],
     data: function() {
         return {
