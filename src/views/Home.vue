@@ -20,7 +20,7 @@ export default {
   },
   data: function() {
     return {
-      data: [],
+      data: null,
       error: false
     };
   },
@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     fetchData: function() {
-      alert("in fetch data")
       var payload = {
         f: "json",
         where: "Confirmed > 0",
