@@ -1,0 +1,11 @@
+language: node_js
+
+before_install:
+  - echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+  - git lfs pull
+
+branches:
+  only:
+  - master
+
+script: npm run test:unit
