@@ -77,7 +77,6 @@ export default {
     data: function() {
         return {
             data: [],
-            bgColor: "#F7F7F7",
             error: false
         };
     },
