@@ -11,3 +11,4 @@ install:
 
 script:
   - npm run test
+  - ./node_modules/.bin/codecov --token="897cb93c-3b5b-464a-b426-85e5e5d75909"
