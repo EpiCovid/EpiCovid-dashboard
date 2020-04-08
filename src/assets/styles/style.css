@@ -1,17 +1,17 @@
 span {
     font-family: Roboto, sans-serif;
     text-transform: none;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .main-color {
     font-family: Roboto, sans-serif;
-    color: #1B252F;
+    color: #1b252f;
 }
 
 .red-color {
     font-family: Roboto, sans-serif;
-    color: #E60000;
+    color: #e60000;
 }
 
 .green-color {
@@ -27,9 +27,13 @@ span {
     border-radius: 5px;
     border: 1px solid #b3b3b3;
     background-color: #fff;
-    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
 #box:hover {
-    box-shadow: 0 0px 10px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.row-border {
+    border-bottom: 1px solid #b3b3b3 !important;
 }
