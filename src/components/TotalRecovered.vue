@@ -8,7 +8,7 @@
                     <v-list class="overflow-y-auto pa-0">
                         <v-layout column>
                             <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
-                                <span class="green-color ml-3" style="font-weight: bold;">
+                                <span class="green-color ml-3 mx-1" style="font-weight: bold;">
                                     {{ country.Recovered }}
                                 </span>
                                 <span>{{ country.Country_Region }}</span>
@@ -56,14 +56,18 @@ export default {
                 });
                 if (!tmp && Number(this.data[i]['attributes']['Recovered']) > 0) countries.push(this.data[i]['attributes']);
             }
-            var total = 0
+            var total = 0;
             countries.forEach((item) => {
                 total += item.Recovered;
             });
-            this.total = this.numberWithSpaces(total)
-            this.countries = countries.sort(function (a, b) {
+            this.total = this.numberWithSpaces(total);
+            countries = countries.sort(function (a, b) {
                 return parseInt(b.Recovered) - parseInt(a.Recovered);
             });
+            for (var j = 0; j < countries.length; j++) {
+                countries[j].Recovered = this.numberWithSpaces(countries[j].Recovered);
+            }
+            this.countries = countries;
         },
     },
 };

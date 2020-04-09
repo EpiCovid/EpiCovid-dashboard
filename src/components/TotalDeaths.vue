@@ -8,7 +8,7 @@
                     <v-list class="overflow-y-auto pa-0">
                         <v-layout column>
                             <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
-                                <span class="ml-3" style="font-weight: bold;">
+                                <span class="ml-3 mx-1" style="font-weight: bold;">
                                     {{ country.Deaths }}
                                 </span>
                                 <span>{{ country.Country_Region }}</span>
@@ -61,9 +61,13 @@ export default {
                 total += item.Deaths;
             });
             this.total = this.numberWithSpaces(total)
-            this.countries = countries.sort(function (a, b) {
+            countries = countries.sort(function (a, b) {
                 return parseInt(b.Deaths) - parseInt(a.Deaths);
             });
+            for (var j = 0; j < countries.length; j++) {
+                countries[j].Deaths = this.numberWithSpaces(countries[j].Deaths)
+            }
+            this.countries = countries
         },
     },
 };
