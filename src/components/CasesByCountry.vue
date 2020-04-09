@@ -1,10 +1,10 @@
 <template>
     <v-card id="box" class="pa-0 ma-1">
         <v-layout column fill-height class="pa-0 ma-0">
-            <h2 class="my-2 main-color center">Cases by Country</h2>
+            <h2 class="mt-2 main-color center">Cases by Country</h2>
             <v-layout column style="height: 0vh;">
                 <v-flex style="overflow: auto;">
-                    <v-list class="overflow-y-auto">
+                    <v-list class="overflow-y-auto pa-0">
                         <v-layout column>
                             <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
                                 <span class="red-color ml-3" style="font-weight: bold;">
@@ -62,7 +62,9 @@ export default {
                 });
                 if (!tmp) countries.push(this.data[i]['attributes']);
             }
-            this.countries = countries;
+            this.countries = countries.sort(function (a, b) {
+                return parseInt(b.Confirmed) - parseInt(a.Confirmed);
+            });
         },
     },
 };
