@@ -7,7 +7,7 @@
                     <v-list class="overflow-y-auto pa-0">
                         <v-layout column>
                             <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
-                                <span class="red-color ml-3" style="font-weight: bold;">
+                                <span class="red-color ml-3 mx-1" style="font-weight: bold;">
                                     {{ country.Confirmed }}
                                 </span>
                                 <span>{{ country.Country_Region }}</span>
@@ -39,6 +39,9 @@ export default {
         this.calc();
     },
     methods: {
+        numberWithSpaces: function (x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        },
         calc: function () {
             var countries = [];
             for (var i = 0; i != this.data.length; i++) {
@@ -51,9 +54,13 @@ export default {
                 });
                 if (!tmp) countries.push(this.data[i]['attributes']);
             }
-            this.countries = countries.sort(function (a, b) {
+            countries = countries.sort(function (a, b) {
                 return parseInt(b.Confirmed) - parseInt(a.Confirmed);
             });
+            for (var j = 0; j < countries.length; j++) {
+                countries[j].Confirmed = this.numberWithSpaces(countries[j].Confirmed)
+            }
+            this.countries = countries
         },
     },
 };
