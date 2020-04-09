@@ -27,11 +27,6 @@ export default {
     data: function () {
         return {
             countries: [],
-            size: this.getWindowSize(),
-            headers: [
-                { text: 'Confirmed', value: 'Confirmed', align: 'right' },
-                { text: 'Country_Region', value: 'Country_Region' },
-            ],
         };
     },
     // Watcher on data props to re-calc when fetching is done
@@ -44,12 +39,6 @@ export default {
         this.calc();
     },
     methods: {
-        numberWithSpaces: function (x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-        },
-        getWindowSize: function () {
-            return { x: window.innerWidth, y: window.innerHeight };
-        },
         calc: function () {
             var countries = [];
             for (var i = 0; i != this.data.length; i++) {
