@@ -1,45 +1,74 @@
 <template>
     <v-card id="box" class="pa-0 ma-1">
-        <v-layout column fill-height class="pa-0 ma-0 my-2">
-            <h2 class="main-color center">Total Recovered</h2>
-            <h1 class="green-color center" style="line-height: 1.2em; font-size: 48px;">66 666</h1>
+        <v-layout column fill-height class="pa-0 ma-0">
+            <h2 class="mt-2 main-color center">Total Recovered</h2>
+            <h1 class="mb-2 green-color center" style="line-height: 1.2em; font-size: 48px;">{{ total }}</h1>
+            <v-layout column style="height: 0vh;">
+                <v-flex style="overflow: auto;">
+                    <v-list class="overflow-y-auto pa-0">
+                        <v-layout column>
+                            <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
+                                <span class="green-color ml-3" style="font-weight: bold;">
+                                    {{ country.Recovered }}
+                                </span>
+                                <span>{{ country.Country_Region }}</span>
+                            </span>
+                        </v-layout>
+                    </v-list>
+                </v-flex>
+            </v-layout>
         </v-layout>
     </v-card>
 </template>
 
 <script>
 export default {
-    name: "TotalRecovered",
-    props: ["data"],
-    data: function() {
+    name: 'TotalRecovered',
+    props: ['data'],
+    data: function () {
         return {
             total: 0,
+            countries: [],
         };
     },
     // Watcher on data props to re-calc when fetching is done
     watch: {
-        data: function() {
+        data: function () {
             this.calc();
-        }
+        },
     },
     created() {
         this.calc();
     },
     methods: {
-        numberWithSpaces: function(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        numberWithSpaces: function (x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         },
-        calc: function() {
-            var total = 0;
+        calc: function () {
+            var countries = [];
             for (var i = 0; i != this.data.length; i++) {
-                total += Number(this.data[i]["attributes"]["Confirmed"]);
+                var tmp = false;
+                countries.forEach((item) => {
+                    if (item.Country_Region === this.data[i]['attributes']['Country_Region']) {
+                        item.Recovered = parseInt(item.Recovered) + parseInt(this.data[i]['attributes']['Recovered']);
+                        tmp = true;
+                    }
+                });
+                if (!tmp && Number(this.data[i]['attributes']['Recovered']) > 0) countries.push(this.data[i]['attributes']);
             }
-            this.total = this.numberWithSpaces(total);
-        }
-    }
+            var total = 0
+            countries.forEach((item) => {
+                total += item.Recovered;
+            });
+            this.total = this.numberWithSpaces(total)
+            this.countries = countries.sort(function (a, b) {
+                return parseInt(b.Recovered) - parseInt(a.Recovered);
+            });
+        },
+    },
 };
 </script>
 
 <style>
-@import "../assets/styles/style.css";
+@import '../assets/styles/style.css';
 </style>

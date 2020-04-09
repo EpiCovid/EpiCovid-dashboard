@@ -2,7 +2,7 @@
     <v-card id="box" class="pa-0 ma-1">
         <v-layout column fill-height class="pa-0 ma-0">
             <h2 class="mt-2 main-color center">Total Deaths</h2>
-            <h1 class="mb-2 main-color center" style="line-height: 1.2em; font-size: 48px;">66 666</h1>
+            <h1 class="mb-2 main-color center" style="line-height: 1.2em; font-size: 48px;">{{total}}</h1>
             <v-layout column style="height: 0vh;">
                 <v-flex style="overflow: auto;">
                     <v-list class="overflow-y-auto pa-0">
@@ -27,6 +27,7 @@ export default {
     props: ['data'],
     data: function () {
         return {
+            total: 0,
             countries: [],
         };
     },
@@ -40,6 +41,9 @@ export default {
         this.calc();
     },
     methods: {
+        numberWithSpaces: function (x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        },
         calc: function () {
             var countries = [];
             for (var i = 0; i != this.data.length; i++) {
@@ -52,6 +56,11 @@ export default {
                 });
                 if (!tmp && Number(this.data[i]['attributes']['Deaths']) > 0) countries.push(this.data[i]['attributes']);
             }
+            var total = 0
+            countries.forEach((item) => {
+                total += item.Deaths;
+            });
+            this.total = this.numberWithSpaces(total)
             this.countries = countries.sort(function (a, b) {
                 return parseInt(b.Deaths) - parseInt(a.Deaths);
             });
