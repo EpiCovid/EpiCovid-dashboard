@@ -1,5 +1,6 @@
+
 import { shallowMount } from '@vue/test-utils'
-import TotalRecovered from '@/components/TotalRecovered'
+import TotalDeaths from '@/components/TotalDeaths'
 
 // Adding Vuetify to avoid warning
 import Vue from 'vue';
@@ -12,53 +13,53 @@ function getMountedComponent(Component, propsData) {
   })
 }
 
-describe('TotalRecovered', () => {
+describe('TotalDeaths', () => {
   /**
-   * Check if TotalRecovered has a 'created' hook
+   * Check if TotalDeaths has a 'created' hook
    */
   it('has a created hook', () => {
-    expect(typeof TotalRecovered.created).toBe('function')
+    expect(typeof TotalDeaths.created).toBe('function')
   });
   /**
-   * Check if TotalRecovered has a 'data' props
+   * Check if TotalDeaths has a 'data' props
    */
   it('sets the correct default data', () => {
-    expect(typeof TotalRecovered.data).toBe('function')
-    const defaultData = TotalRecovered.data()
+    expect(typeof TotalDeaths.data).toBe('function')
+    const defaultData = TotalDeaths.data()
     expect(defaultData.data).toBe(undefined)
   });
   /**
-   * Check if TotalRecovered has a watcher on the data props
+   * Check if TotalDeaths has a watcher on the data props
    */
   it('has a watcher on data', () => {
-    expect(typeof TotalRecovered.watch.data).toBe('function')
+    expect(typeof TotalDeaths.watch.data).toBe('function')
   })
   /**
-   * Check if the component render well the total recovered
+   * Check if the component render well the total Deaths
    */
   it('renders correcly with different data props', () => {
     var data = [{
       "attributes": {
-        "Recovered": 1
+        "Deaths": 1
       }
     }, {
       "attributes": {
-        "Recovered": 1
+        "Deaths": 1
       }
     }]
-    expect(getMountedComponent(TotalRecovered, { data: data })
+    expect(getMountedComponent(TotalDeaths, { data: data })
       .html())
       .toContain("2")
     data = [{
       "attributes": {
-        "Recovered": 42
+        "Deaths": 42
       }
     }, {
       "attributes": {
-        "Recovered": 10
+        "Deaths": 10
       }
     }]
-    expect(getMountedComponent(TotalRecovered, { data: data })
+    expect(getMountedComponent(TotalDeaths, { data: data })
       .html())
       .toContain("52")
   })
@@ -68,23 +69,23 @@ describe('TotalRecovered', () => {
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
       "attributes": {
-        "Recovered": 1
+        "Deaths": 1
       }
     }, {
       "attributes": {
-        "Recovered": 1
+        "Deaths": 1
       }
     }]
-    const wrapper = getMountedComponent(TotalRecovered, { data: data })
+    const wrapper = getMountedComponent(TotalDeaths, { data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toContain('2')
     data = [{
       "attributes": {
-        "Recovered": 42
+        "Deaths": 42
       }
     }, {
       "attributes": {
-        "Recovered": 10
+        "Deaths": 10
       }
     }]
     wrapper.setData({ data: data })
