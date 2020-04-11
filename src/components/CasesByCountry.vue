@@ -1,23 +1,25 @@
 <template>
-    <v-card id="box" class="pa-0 ma-1">
-        <v-layout column fill-height class="pa-0 ma-0">
-            <h2 class="mt-2 main-color center">Cases by Country</h2>
-            <v-layout column style="height: 0vh;">
-                <v-flex style="overflow: auto;">
-                    <v-list class="overflow-y-auto pa-0">
-                        <v-layout column>
-                            <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
-                                <span class="red-color ml-3 mx-1" style="font-weight: bold;">
-                                    {{ country.Confirmed }}
-                                </span>
-                                <span>{{ country.Country_Region }}</span>
-                            </span>
-                        </v-layout>
-                    </v-list>
-                </v-flex>
+  <v-card id="box" class="pa-0 ma-1">
+    <v-layout column fill-height class="pa-0 ma-0">
+      <h2 class="mt-2 main-color center">Cases by Country</h2>
+      <v-layout column style="height: 0vh;">
+        <v-flex style="overflow: auto;">
+          <v-list class="overflow-y-auto pa-0">
+            <v-layout column>
+              <span
+                class="row-border py-1"
+                v-for="country of countries"
+                :key="country.Country_Region"
+              >
+                <span class="red-color ml-3 mx-1" style="font-weight: bold;">{{ country.Confirmed }}</span>
+                <span>{{ country.Country_Region }}</span>
+              </span>
             </v-layout>
-        </v-layout>
-    </v-card>
+          </v-list>
+        </v-flex>
+      </v-layout>
+    </v-layout>
+  </v-card>
 </template>
 
 <script>
@@ -67,5 +69,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/styles/style.css';
+@import "../assets/styles/style.css";
 </style>

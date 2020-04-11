@@ -74,7 +74,6 @@ describe('TotalCountries', () => {
    * Check if the component re-render when data is modified
    */
   it('updates the rendered message when wrapper.data updates', async () => {
-
     var data = [{
       "attributes": {
         "Country_Region": "US"
@@ -91,8 +90,6 @@ describe('TotalCountries', () => {
     const wrapper = getMountedComponent(TotalCountries, { data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toContain('2')
-
-
     data = [{
       "attributes": {
         "Country_Region": "US"
