@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import TotalRecovered from '@/components/TotalRecovered'
+import LastUpdate from '@/components/LastUpdate'
 
 // Adding Vuetify to avoid warning
 import Vue from 'vue';
@@ -12,55 +12,55 @@ function getMountedComponent(Component, propsData) {
   })
 }
 
-describe('TotalRecovered', () => {
+describe('LastUpdate', () => {
   /**
-   * Check if TotalRecovered has a 'created' hook
+   * Check if LastUpdate has a 'created' hook
    */
   it('has a created hook', () => {
-    expect(typeof TotalRecovered.created).toBe('function')
+    expect(typeof LastUpdate.created).toBe('function')
   });
   /**
-   * Check if TotalRecovered has a 'data' props
+   * Check if LastUpdate has a 'data' props
    */
   it('sets the correct default data', () => {
-    expect(typeof TotalRecovered.data).toBe('function')
-    const defaultData = TotalRecovered.data()
+    expect(typeof LastUpdate.data).toBe('function')
+    const defaultData = LastUpdate.data()
     expect(defaultData.data).toBe(undefined)
   });
   /**
-   * Check if TotalRecovered has a watcher on the data props
+   * Check if LastUpdate has a watcher on the data props
    */
   it('has a watcher on data', () => {
-    expect(typeof TotalRecovered.watch.data).toBe('function')
+    expect(typeof LastUpdate.watch.data).toBe('function')
   })
   /**
-   * Check if the component render well the total recovered
+   * Check if the component render well the last update
    */
   it('renders correcly with different data props', () => {
     var data = [{
       "attributes": {
-        "Recovered": 1
+        "Last_Update": 100000
       }
     }, {
       "attributes": {
-        "Recovered": 1
+        "Last_Update": 200000
       }
     }]
-    expect(getMountedComponent(TotalRecovered, { data: data })
+    expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toContain("2")
+      .toContain("01/01/1970 1:03 AM")
     data = [{
       "attributes": {
-        "Recovered": 42
+        "Last_Update": 200000
       }
     }, {
       "attributes": {
-        "Recovered": 10
+        "Last_Update": 300000
       }
     }]
-    expect(getMountedComponent(TotalRecovered, { data: data })
+    expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toContain("52")
+      .toContain("01/01/1970 1:05 AM")
   })
   /**
    * Check if the component re-render when data is modified
@@ -68,27 +68,27 @@ describe('TotalRecovered', () => {
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
       "attributes": {
-        "Recovered": 1
+        "Last_Update": 100000
       }
     }, {
       "attributes": {
-        "Recovered": 1
+        "Last_Update": 200000
       }
     }]
-    const wrapper = getMountedComponent(TotalRecovered, { data: data })
+    const wrapper = getMountedComponent(LastUpdate, { data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toContain('2')
+    expect(wrapper.html()).toContain('01/01/1970 1:03 AM')
     data = [{
       "attributes": {
-        "Recovered": 42
+        "Last_Update": 200000
       }
     }, {
       "attributes": {
-        "Recovered": 10
+        "Last_Update": 300000
       }
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toContain('52')
+    expect(wrapper.html()).toContain('01/01/1970 1:05 AM')
   })
 })
