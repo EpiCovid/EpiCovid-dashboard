@@ -41,6 +41,7 @@
                             <TotalRecovered style="height:100%;" :data="data" />
                         </v-layout>
                     </v-layout>
+                    <Twitter />
                     <Charts style="height:40%;" :data="data" />
                 </v-layout>
             </v-row>
@@ -58,6 +59,7 @@ import Credits from "@/components/Credits";
 import TotalDeaths from "@/components/TotalDeaths";
 import TotalRecovered from "@/components/TotalRecovered";
 import Charts from "@/components/Charts";
+import Twitter from "@/components/Twitter";
 
 var url = require("url");
 
@@ -73,6 +75,7 @@ export default {
         TotalDeaths,
         TotalRecovered,
         Charts,
+        Twitter
     },
     data: function() {
         return {
