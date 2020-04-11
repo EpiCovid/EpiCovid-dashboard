@@ -48,7 +48,7 @@ describe('LastUpdate', () => {
     }]
     expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toContain("01/01/1970 1:06 AM")
+      .toMatch(/01\/01\/1970 .*:06 AM/)
     data = [{
       "attributes": {
         "Last_Update": 200000
@@ -60,7 +60,7 @@ describe('LastUpdate', () => {
     }]
     expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toContain("01/01/1970 1:05 AM")
+      .toMatch(/01\/01\/1970 .*:05 AM/)
   })
   /**
    * Check if the component re-render when data is modified
@@ -77,7 +77,7 @@ describe('LastUpdate', () => {
     }]
     const wrapper = getMountedComponent(LastUpdate, { data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toContain('01/01/1970 1:06 AM')
+    expect(wrapper.html()).toMatch(/01\/01\/1970 .*:06 AM/)
     data = [{
       "attributes": {
         "Last_Update": 200000
@@ -89,6 +89,6 @@ describe('LastUpdate', () => {
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toContain('01/01/1970 1:05 AM')
+    expect(wrapper.html()).toMatch(/01\/01\/1970 .*:05 AM/)
   })
 })
