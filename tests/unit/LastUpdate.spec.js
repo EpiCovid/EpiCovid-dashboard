@@ -43,12 +43,12 @@ describe('LastUpdate', () => {
       }
     }, {
       "attributes": {
-        "Last_Update": 200000
+        "Last_Update": 400000
       }
     }]
     expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toContain("01/01/1970 1:03 AM")
+      .toContain("01/01/1970 1:06 AM")
     data = [{
       "attributes": {
         "Last_Update": 200000
@@ -72,12 +72,12 @@ describe('LastUpdate', () => {
       }
     }, {
       "attributes": {
-        "Last_Update": 200000
+        "Last_Update": 400000
       }
     }]
     const wrapper = getMountedComponent(LastUpdate, { data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toContain('01/01/1970 1:03 AM')
+    expect(wrapper.html()).toContain('01/01/1970 1:06 AM')
     data = [{
       "attributes": {
         "Last_Update": 200000
