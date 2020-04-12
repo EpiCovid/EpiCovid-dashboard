@@ -8,6 +8,9 @@
 </template>
 
 <script>
+
+var dateFormat = require('dateformat');
+
 export default {
     name: 'LastUpdate',
     props: ['data'],
@@ -26,18 +29,16 @@ export default {
         this.calc();
     },
     methods: {
-        convertTimestamp: function (ts) {
-            var dateFormat = require('dateformat');
-            var date = new Date(ts);
-            return dateFormat(date, 'mm/dd/yyyy h:MM TT');
+        convertTimestamp: function (tmp) {
+            return dateFormat(tmp, 'mm/dd/yyyy h:MM TT');
         },
         calc: function () {
             var tab = [];
             for (var i = 0; i != this.data.length; i++) {
-                tab.push(Number(this.data[i]['attributes']['Last_Update']));
+                tab.push(new Date(this.data[i]['last_update']));
             }
             var tmp = tab.sort(function (a, b) {
-                return parseInt(b) - parseInt(a);
+                return b - a;
             })[0];
             this.date = this.convertTimestamp(tmp);
         },

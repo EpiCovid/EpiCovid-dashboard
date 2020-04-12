@@ -38,25 +38,29 @@ describe('TotalRecovered', () => {
    */
   it('renders correcly with different data props', () => {
     var data = [{
-      "attributes": {
-        "Recovered": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 1
     }, {
-      "attributes": {
-        "Recovered": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 1
     }]
     expect(getMountedComponent(TotalRecovered, { data: data })
       .html())
       .toContain("2")
     data = [{
-      "attributes": {
-        "Recovered": 42
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 42
     }, {
-      "attributes": {
-        "Recovered": 10
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 10
     }]
     expect(getMountedComponent(TotalRecovered, { data: data })
       .html())
@@ -67,25 +71,29 @@ describe('TotalRecovered', () => {
    */
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
-      "attributes": {
-        "Recovered": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 1
     }, {
-      "attributes": {
-        "Recovered": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 1
     }]
     const wrapper = getMountedComponent(TotalRecovered, { data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toContain('2')
     data = [{
-      "attributes": {
-        "Recovered": 42
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 42
     }, {
-      "attributes": {
-        "Recovered": 10
-      }
+      "region": {
+        "name": "US"
+      },
+      "recovered": 10
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()

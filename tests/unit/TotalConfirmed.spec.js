@@ -38,26 +38,29 @@ describe('TotalConfirmed', () => {
    */
   it('renders correctly with different data props', () => {
     var data = [{
-      "attributes": {
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }]
     expect(getMountedComponent(TotalConfirmed, { data: data })
       .html())
       .toContain('2')
-
-    var data = [{
-      "attributes": {
-        "Confirmed": 42
-      }
+    data = [{
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 42
     }, {
-      "attributes": {
-        "Confirmed": 10
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 10
     }]
     expect(getMountedComponent(TotalConfirmed, { data: data })
       .html())
@@ -68,25 +71,29 @@ describe('TotalConfirmed', () => {
    */
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
-      "attributes": {
-        "Confirmed": 10
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 10
     }, {
-      "attributes": {
-        "Confirmed": 10
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 10
     }]
     const wrapper = getMountedComponent(TotalConfirmed, { data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toContain('20')
     data = [{
-      "attributes": {
-        "Confirmed": 41
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 41
     }, {
-      "attributes": {
-        "Confirmed": 10
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 10
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()

@@ -38,32 +38,32 @@ describe('TotalCountries', () => {
    */
   it('renders correctly with different data props', () => {
     var data = [{
-      "attributes": {
-        "Country_Region": "US"
+      "region": {
+        "name": "US"
       }
     }, {
-      "attributes": {
-        "Country_Region": "US"
+      "region": {
+        "name": "US"
       }
     }, {
-      "attributes": {
-        "Country_Region": "France"
+      "region": {
+        "name": "France"
       }
     }]
     expect(getMountedComponent(TotalCountries, { data: data })
       .html())
       .toContain('2')
     data = [{
-      "attributes": {
-        "Country_Region": "US"
+      "region": {
+        "name": "US"
       }
     }, {
-      "attributes": {
-        "Country_Region": "China"
+      "region": {
+        "name": "China"
       }
     }, {
-      "attributes": {
-        "Country_Region": "France"
+      "region": {
+        "name": "France"
       }
     }]
     expect(getMountedComponent(TotalCountries, { data: data })
@@ -75,32 +75,32 @@ describe('TotalCountries', () => {
    */
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
-      "attributes": {
-        "Country_Region": "US"
+      "region": {
+        "name": "US"
       }
     }, {
-      "attributes": {
-        "Country_Region": "US"
+      "region": {
+        "name": "US"
       }
     }, {
-      "attributes": {
-        "Country_Region": "France"
+      "region": {
+        "name": "France"
       }
     }]
     const wrapper = getMountedComponent(TotalCountries, { data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toContain('2')
     data = [{
-      "attributes": {
-        "Country_Region": "US"
+      "region": {
+        "name": "US"
       }
     }, {
-      "attributes": {
-        "Country_Region": "China"
+      "region": {
+        "name": "China"
       }
     }, {
-      "attributes": {
-        "Country_Region": "France"
+      "region": {
+        "name": "France"
       }
     }]
     wrapper.setData({ data: data })

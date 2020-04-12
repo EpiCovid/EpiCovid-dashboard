@@ -38,43 +38,43 @@ describe('CasesByCountry', () => {
    */
   it('renders correcly with different data props', () => {
     var data = [{
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }]
     expect(getMountedComponent(CasesByCountry, { data: data })
       .html())
       .toMatch(/2.*US/)
     data = [{
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Country_Region": "France",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "France"
+      },
+      "confirmed": 1
     }]
     expect(getMountedComponent(CasesByCountry, { data: data })
       .html())
       .toMatch(/1.*US.*1.*France/)
     data = [{
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Country_Region": "France",
-        "Confirmed": 2
-      }
+      "region": {
+        "name": "France"
+      },
+      "confirmed": 2
     }]
     expect(getMountedComponent(CasesByCountry, { data: data })
       .html())
@@ -85,43 +85,43 @@ describe('CasesByCountry', () => {
    */
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }]
     const wrapper = getMountedComponent(CasesByCountry, { data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toMatch(/2.*US/)
     data = [{
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Country_Region": "France",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "France"
+      },
+      "confirmed": 1
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toMatch(/1.*US.*1.*France/)
     data = [{
-      "attributes": {
-        "Country_Region": "US",
-        "Confirmed": 1
-      }
+      "region": {
+        "name": "US"
+      },
+      "confirmed": 1
     }, {
-      "attributes": {
-        "Country_Region": "France",
-        "Confirmed": 2
-      }
+      "region": {
+        "name": "France"
+      },
+      "confirmed": 2
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()
