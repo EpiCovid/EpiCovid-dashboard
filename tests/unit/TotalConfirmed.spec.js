@@ -90,7 +90,6 @@ describe('TotalConfirmed', () => {
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()
-    // expect(wrapper.html()).not.toContain('2')
     expect(wrapper.html()).toContain('51')
   })
 })
