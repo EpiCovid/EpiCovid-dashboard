@@ -31,11 +31,11 @@ export default {
             for (var i = 0; i != this.data.length; i++) {
                 var tmp = false;
                 countries.forEach((item) => {
-                    if (item === this.data[i]['attributes']['Country_Region']) {
+                    if (item === this.data[i]['region']['name']) {
                         tmp = true;
                     }
                 });
-                if (!tmp) countries.push(this.data[i]['attributes']['Country_Region']);
+                if (!tmp) countries.push(this.data[i]['region']['name']);
             }
             this.total = countries.length;
         },

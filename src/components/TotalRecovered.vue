@@ -7,11 +7,11 @@
                 <v-flex style="overflow: auto;">
                     <v-list class="overflow-y-auto pa-0">
                         <v-layout column>
-                            <span class="row-border py-1" v-for="country of countries" :key="country.Country_Region">
+                            <span class="row-border py-1" v-for="country of countries" :key="country.region.name">
                                 <span class="green-color ml-3 mx-1" style="font-weight: bold;">
-                                    {{ country.Recovered }}
+                                    {{ country.recovered }}
                                 </span>
-                                <span>{{ country.Country_Region }}</span>
+                                <span>{{ country.region.name }}</span>
                             </span>
                         </v-layout>
                     </v-list>
@@ -49,23 +49,23 @@ export default {
             for (var i = 0; i != this.data.length; i++) {
                 var tmp = false;
                 countries.forEach((item) => {
-                    if (item.Country_Region === this.data[i]['attributes']['Country_Region']) {
-                        item.Recovered = parseInt(item.Recovered) + parseInt(this.data[i]['attributes']['Recovered']);
+                    if (item.region.name === this.data[i]['region']['name']) {
+                        item.recovered = parseInt(item.recovered) + parseInt(this.data[i]['recovered']);
                         tmp = true;
                     }
                 });
-                if (!tmp && Number(this.data[i]['attributes']['Recovered']) > 0) countries.push(this.data[i]['attributes']);
+                if (!tmp && Number(this.data[i]['recovered']) > 0) countries.push(this.data[i]);
             }
             var total = 0;
             countries.forEach((item) => {
-                total += item.Recovered;
+                total += item.recovered;
             });
             this.total = this.numberWithSpaces(total);
             countries = countries.sort(function (a, b) {
-                return parseInt(b.Recovered) - parseInt(a.Recovered);
+                return parseInt(b.recovered) - parseInt(a.recovered);
             });
             for (var j = 0; j < countries.length; j++) {
-                countries[j].Recovered = this.numberWithSpaces(countries[j].Recovered);
+                countries[j].recovered = this.numberWithSpaces(countries[j].recovered);
             }
             this.countries = countries;
         },

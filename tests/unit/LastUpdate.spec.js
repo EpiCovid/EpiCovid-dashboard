@@ -38,57 +38,41 @@ describe('LastUpdate', () => {
    */
   it('renders correcly with different data props', () => {
     var data = [{
-      "attributes": {
-        "Last_Update": 100000
-      }
+      "last_update": "2020-04-11 20:15:00"
     }, {
-      "attributes": {
-        "Last_Update": 400000
-      }
+      "last_update": "2020-03-11 02:00:00"
     }]
     expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toMatch(/01\/01\/1970 .*:06 AM/)
+      .toMatch(/04\/11\/2020 .*:15 PM/)
     data = [{
-      "attributes": {
-        "Last_Update": 200000
-      }
+      "last_update": "2020-01-11 22:45:00"
     }, {
-      "attributes": {
-        "Last_Update": 300000
-      }
+      "last_update": "2020-03-11 13:00:00"
     }]
     expect(getMountedComponent(LastUpdate, { data: data })
       .html())
-      .toMatch(/01\/01\/1970 .*:05 AM/)
+      .toMatch(/03\/11\/2020 .*:00 PM/)
   })
   /**
    * Check if the component re-render when data is modified
    */
   it('updates the rendered message when wrapper.data updates', async () => {
     var data = [{
-      "attributes": {
-        "Last_Update": 100000
-      }
+      "last_update": "2020-04-11 20:15:00"
     }, {
-      "attributes": {
-        "Last_Update": 400000
-      }
+      "last_update": "2020-03-11 02:00:00"
     }]
     const wrapper = getMountedComponent(LastUpdate, { data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toMatch(/01\/01\/1970 .*:06 AM/)
+    expect(wrapper.html()).toMatch(/04\/11\/2020 .*:15 PM/)
     data = [{
-      "attributes": {
-        "Last_Update": 200000
-      }
+      "last_update": "2020-01-11 22:45:00"
     }, {
-      "attributes": {
-        "Last_Update": 300000
-      }
+      "last_update": "2020-03-11 12:00:00"
     }]
     wrapper.setData({ data: data })
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toMatch(/01\/01\/1970 .*:05 AM/)
+    expect(wrapper.html()).toMatch(/03\/11\/2020 .*:00 PM/)
   })
 })

@@ -1,6 +1,6 @@
 <template>
     <v-card id="box" class="pa-0 ma-1">
-        <v-layout column fill-height class="justify-center align-center pa-0 ma-0" id="map_size">
+        <v-layout column fill-height class="justify-center" id="map_size">
             <template v-if="displayMap">
                 <Plotly :data="marker" :layout="layout" :display-mode-bar="false"></Plotly>
             </template>

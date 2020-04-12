@@ -6,13 +6,9 @@
         <v-flex style="overflow: auto;">
           <v-list class="overflow-y-auto pa-0">
             <v-layout column>
-              <span
-                class="row-border py-1"
-                v-for="country of countries"
-                :key="country.Country_Region"
-              >
-                <span class="red-color ml-3 mx-1" style="font-weight: bold;">{{ country.Confirmed }}</span>
-                <span>{{ country.Country_Region }}</span>
+              <span class="row-border py-1" v-for="country of countries" :key="country.region.name">
+                <span class="red-color ml-3 mx-1" style="font-weight: bold;">{{ country.confirmed }}</span>
+                <span>{{ country.region.name }}</span>
               </span>
             </v-layout>
           </v-list>
@@ -49,18 +45,18 @@ export default {
             for (var i = 0; i != this.data.length; i++) {
                 var tmp = false;
                 countries.forEach((item) => {
-                    if (item.Country_Region === this.data[i]['attributes']['Country_Region']) {
-                        item.Confirmed = parseInt(item.Confirmed) + parseInt(this.data[i]['attributes']['Confirmed']);
+                    if (item.region.name === this.data[i]['region']['name']) {
+                        item.confirmed = parseInt(item.confirmed) + parseInt(this.data[i]['confirmed']);
                         tmp = true;
                     }
                 });
-                if (!tmp) countries.push(this.data[i]['attributes']);
+                if (!tmp) countries.push(this.data[i]);
             }
             countries = countries.sort(function (a, b) {
-                return parseInt(b.Confirmed) - parseInt(a.Confirmed);
+                return parseInt(b.confirmed) - parseInt(a.confirmed);
             });
             for (var j = 0; j < countries.length; j++) {
-                countries[j].Confirmed = this.numberWithSpaces(countries[j].Confirmed)
+                countries[j].confirmed = this.numberWithSpaces(countries[j].confirmed)
             }
             this.countries = countries
         },

@@ -32,7 +32,7 @@ export default {
         calc: function() {
             var total = 0;
             for (var i = 0; i != this.data.length; i++) {
-                total += Number(this.data[i]["attributes"]["Confirmed"]);
+                total += Number(this.data[i]["confirmed"]);
             }
             this.total = this.numberWithSpaces(total);
         }
