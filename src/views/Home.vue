@@ -20,15 +20,16 @@
         <v-layout column class="pa-0 ma-0 col-6">
           <v-layout row class="pa-0 ma-0" style="height:88%;">
             <v-layout column class="pa-0 ma-0">
-              <Map style="height:100%;" :data="data" />
+              <!-- <Map style="height:100%;" :data="data" /> -->
             </v-layout>
           </v-layout>
-          <v-layout row class="pa-0 ma-0" style="height:12%;">
+          <v-layout row class="pa-0 ma-0">
             <v-layout column class="pa-0 ma-0 col-2">
               <TotalCountries style="height:100%;" :data="data" />
             </v-layout>
             <v-layout column class="pa-0 ma-0 col-10">
-              <Credits style="height:100%;" :data="data" />
+              <TimeTravel style="height:100%;" v-on:update="update($event)" :data="data"/>
+              <!-- <Credits style="height:100%;" :data="data" /> -->
             </v-layout>
           </v-layout>
         </v-layout>
@@ -42,7 +43,6 @@
             </v-layout>
           </v-layout>
           <Twitter />
-          <TimeTravel v-on:update="update($event.target.value)" />
           <Charts style="height:40%;" :data="data" />
         </v-layout>
       </v-row>
@@ -54,9 +54,9 @@
 import TotalConfirmed from "@/components/TotalConfirmed";
 import CasesByCountry from "@/components/CasesByCountry";
 import LastUpdate from "@/components/LastUpdate";
-import Map from "@/components/Map";
+// import Map from "@/components/Map";
 import TotalCountries from "@/components/TotalCountries";
-import Credits from "@/components/Credits";
+// import Credits from "@/components/Credits";
 import TotalDeaths from "@/components/TotalDeaths";
 import TotalRecovered from "@/components/TotalRecovered";
 import Charts from "@/components/Charts";
@@ -69,9 +69,9 @@ export default {
     TotalConfirmed,
     CasesByCountry,
     LastUpdate,
-    Map,
+    // Map,
     TotalCountries,
-    Credits,
+    // Credits,
     TotalDeaths,
     TotalRecovered,
     Charts,
@@ -89,7 +89,7 @@ export default {
   },
   methods: {
     fetchData: function(date = null) {
-      var query = date ? "?data=" + date : ""
+      var query = date ? "?date=" + date : ""
       fetch("https://covid-api.com/api/reports" + query)
         .then(response => {
           return response.json();
