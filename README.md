@@ -1,6 +1,6 @@
 # EpiCovid-dashboard
 [![Build Status](https://travis-ci.com/YEP-project1-2019/EpiCovid-dashboard.svg?token=bQxGN9ym5y5H9DsyxUEu&branch=master)](https://travis-ci.com/YEP-project1-2019/EpiCovid-dashboard)
-[![codecov](https://codecov.io/gh/MageNume/YEP_project1_2019/branch/master/graph/badge.svg?token=QIA226E0M8)](https://codecov.io/gh/MageNume/YEP_project1_2019)
+[![codecov](https://codecov.io/gh/YEP_project1_2019/EpiCovid-dashboard/branch/master/graph/badge.svg?token=BD0rtITAzm)](https://codecov.io/gh/MageNume/YEP_project1_2019)
 
 
 
