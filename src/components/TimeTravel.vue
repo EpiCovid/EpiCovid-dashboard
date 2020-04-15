@@ -57,6 +57,7 @@ export default {
     },
     emit() {
       var date = dateFormat(new Date(this.slide * 1000), "yyyy-mm-dd")
+      dateFormat(new Date(), "yyyy-mm-dd") == date ? date = "" : null
       this.$emit('update', date)
       this.disabled = true;
       return;
