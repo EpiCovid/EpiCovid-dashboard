@@ -20,7 +20,7 @@
         <v-layout column class="pa-0 ma-0 col-6">
           <v-layout row class="pa-0 ma-0" style="height:88%;">
             <v-layout column class="pa-0 ma-0">
-              <!-- <Map style="height:100%;" :data="data" /> -->
+              <Map style="height:100%;" :data="data" />
             </v-layout>
           </v-layout>
           <v-layout row class="pa-0 ma-0">
@@ -54,7 +54,7 @@
 import TotalConfirmed from "@/components/TotalConfirmed";
 import CasesByCountry from "@/components/CasesByCountry";
 import LastUpdate from "@/components/LastUpdate";
-// import Map from "@/components/Map";
+import Map from "@/components/Map";
 import TotalCountries from "@/components/TotalCountries";
 // import Credits from "@/components/Credits";
 import TotalDeaths from "@/components/TotalDeaths";
@@ -69,7 +69,7 @@ export default {
     TotalConfirmed,
     CasesByCountry,
     LastUpdate,
-    // Map,
+    Map,
     TotalCountries,
     // Credits,
     TotalDeaths,

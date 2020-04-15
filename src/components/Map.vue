@@ -47,6 +47,18 @@ export default {
                     showcountries: true,
                     showframe: false,
                     //showcoastlines: false,
+                    showland: true,
+                    showocean: true,
+                    // showrivers:true,
+                    showlakes: true,
+                    //showsubunits: true,
+                    color: "continent",
+                    landcolor: "#2D2D2E",
+                    oceancolor:"#0B0B1A",
+                    rivercolor:"#746A85",
+                    countrycolor: "#7E6798",
+                    coastlinecolor: "black",
+                    // projection_type: 'mercator',
                     scope: "worlds",
                     resolution: 50,
                 },
@@ -72,35 +84,31 @@ export default {
             let size = 0;
             let countryInformation = [];
             let text = "";
-            console.log(this.data);
             for (let i = 0; i != this.data.length; i++) {
-                text ="";
+                text = "";
+                size = 0;
                 // GET ALL LOCATIONS
-                locations.lat.push(this.data[i]["attributes"]["Lat"]);
-                locations.lon.push(this.data[i]["attributes"]["Long_"]);
+                locations.lat.push(this.data[i]["region"]["lat"]);
+                locations.lon.push(this.data[i]["region"]["long"]);
                 // SET markerSize by Confirmed ratio 15 000 / 17
-                size = this.data[i]["attributes"]["Confirmed"] > 15000 ? 15000 : this.data[i]["attributes"]["Confirmed"];
+                size = Number(this.data[i]["confirmed"]) > 15000 ? 15000 : this.data[i]["confirmed"];
                 // SIZE is between [4,17]
                 size = Number((size / 15000) * 17) < 4 ? 4 : Number((size / 15000) * 17);
-                if (size) {
-                    markerSize.push(size);
-                }
-                if (this.data[i]["attributes"]["Province_State"]) {
-                    text = "City: " + this.data[i]["attributes"]["Province_State"] + " ";
+                markerSize.push(size);
+                if (this.data[i]["region"]["province"]) {
+                    text = "City: " + this.data[i]["region"]["province"] + " ";
                 }
                 text +=
                     "Country: " +
-                    this.data[i]["attributes"]["Country_Region"] +
+                    this.data[i]["region"]["name"] +
                     " Confirmed: " +
-                    this.data[i]["attributes"]["Confirmed"] +
+                    this.data[i]["confirmed"] +
                     " Deaths: " +
-                    this.data[i]["attributes"]["Deaths"] +
+                    this.data[i]["deaths"] +
                     " Recovered: " +
-                    this.data[i]["attributes"]["Recovered"];
+                    this.data[i]["recovered"];
                 countryInformation.push(text);
             }
-            // console.log(locations.lat);
-            // console.log(locations.lon);
             this.marker[0].lat = locations.lat;
             this.marker[0].lon = locations.lon;
             this.marker[0].marker.size = markerSize;
