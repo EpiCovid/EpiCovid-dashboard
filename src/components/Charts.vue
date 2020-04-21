@@ -1,32 +1,50 @@
 <template>
-    <v-card id="box" class="pa-0 ma-1">
-        <v-layout column fill-height class="justify-center align-center pa-0 ma-0">
-        </v-layout>
-    </v-card>
+  <v-card id="box" class="pa-0 ma-1">
+    <v-tabs v-model="active_tab_id">
+      <v-tab v-for="i in tab" :key="i.id">{{i.text}}</v-tab>
+    </v-tabs>
+    <component v-bind:is="currentTabComponent"></component>
+  </v-card>
 </template>
 
 <script>
+import GoogleTrends from './GoogleTrends.vue';
+import Twitter from './Twitter.vue'
+
 export default {
-    name: "Charts",
-    props: ["data"],
+  name: "Charts",
+  components: {
+    GoogleTrends ,
+    Twitter
+  },
+  props: ["data"],
+  data: function() {
+    return {
+      tab: [
+        {id: 0, text: "Google", components: "GoogleTrends"},
+        {id: 1, text: "Twitter", components: "Twitter"}
+      ],
+      active_tab_id: 0,
+    };
+  },
+  // Watcher on data props to re-calc when fetching is done
+  watch: {
     data: function() {
-        return {
-            total: 0,
-        };
+      this.calc();
     },
-    // Watcher on data props to re-calc when fetching is done
-    watch: {
-        data: function() {
-            this.calc();
-        }
-    },
-    created() {
-        this.calc();
-    },
-    methods: {
-        calc: function() {
-        }
+  },
+  created() {
+    this.calc();
+  },
+  methods: {
+    calc: function() {
     }
+  },
+  computed: {
+    currentTabComponent: function() {
+      return this.tab[this.active_tab_id].components
+    }
+  }
 };
 </script>
 
