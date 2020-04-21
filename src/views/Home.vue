@@ -42,7 +42,6 @@
               <TotalRecovered style="height:100%;" :data="data" />
             </v-layout>
           </v-layout>
-          <Twitter />
           <Charts style="height:40%;" :data="data" />
         </v-layout>
       </v-row>
@@ -60,9 +59,7 @@ import TotalCountries from "@/components/TotalCountries";
 import TotalDeaths from "@/components/TotalDeaths";
 import TotalRecovered from "@/components/TotalRecovered";
 import Charts from "@/components/Charts";
-import Twitter from "@/components/Twitter";
 import TimeTravel from "@/components/TimeTravel";
-
 export default {
   name: "Home",
   components: {
@@ -71,12 +68,10 @@ export default {
     LastUpdate,
     Map,
     TotalCountries,
-    // Credits,
     TotalDeaths,
     TotalRecovered,
     Charts,
-    Twitter,
-    TimeTravel
+    TimeTravel,
   },
   data: function() {
     return {

@@ -1,44 +1,50 @@
 <template>
   <v-card id="box" class="pa-0 ma-1">
-    <v-flex>
-    <!-- <v-layout column fill-height class="justify-center align-center pa-0 ma-0"> -->
-       <div id="google"></div>
-    </v-flex>
-    <!-- </v-layout> -->
+    <v-tabs v-model="active_tab_id">
+      <v-tab v-for="i in tab" :key="i.id">{{i.text}}</v-tab>
+    </v-tabs>
+    <component v-bind:is="currentTabComponent"></component>
   </v-card>
 </template>
 
 <script>
-
-</script>
-
-<script>
-import {trends} from "@/assets/trends.js"
+import GoogleTrends from './GoogleTrends.vue';
+import Twitter from './Twitter.vue'
 
 export default {
-    name: "Charts",
-    props: ["data"],
+  name: "Charts",
+  components: {
+    GoogleTrends ,
+    Twitter
+  },
+  props: ["data"],
+  data: function() {
+    return {
+      tab: [
+        {id: 0, text: "Google", components: "GoogleTrends"},
+        {id: 1, text: "Twitter", components: "Twitter"}
+      ],
+      active_tab_id: 0,
+    };
+  },
+  // Watcher on data props to re-calc when fetching is done
+  watch: {
     data: function() {
-        return {
-            total: 0,
-        };
-    },
-    mounted: function() {
-      trends.embed.renderExploreWidgetTo(document.getElementById("google"), "TIMESERIES", { "comparisonItem": [{ "keyword": "Coronavirus", "geo": "", "time": "today 3-m" }], "category": 0, "property": "" }, { "exploreQuery": "date=today%203-m&q=Coronavirus", "guestPath": "https://trends.google.com:443/trends/embed/" });
-    },
-    // Watcher on data props to re-calc when fetching is done
-    watch: {
-        data: function() {
-            this.calc();
-        }
-    },
-    created() {
       this.calc();
     },
-    methods: {
-        calc: function() {
-        }
+  },
+  created() {
+    this.calc();
+  },
+  methods: {
+    calc: function() {
     }
+  },
+  computed: {
+    currentTabComponent: function() {
+      return this.tab[this.active_tab_id].components
+    }
+  }
 };
 </script>
 
