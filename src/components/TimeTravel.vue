@@ -1,13 +1,15 @@
 <template>
   <v-card id="box" class="pa-0 ma-1" :loading="disabled">
     <v-card-title>Time Travel</v-card-title>
-    <v-flex class="mr-5 ml-5">
-      <v-slider :min="min" :max="max" v-model="slide" :disabled="disabled" track-color="grey">
-        <template v-slot:append>
-          <p>{{time}}</p>
-        </template>
-      </v-slider>
-    </v-flex>
+    <v-layout class="mr-5 ml-5" column>
+      <v-flex>
+        <v-slider :min="min" :max="max" v-model="slide" :disabled="disabled" track-color="grey">
+          <template v-slot:append>
+            <p>{{time}}</p>
+          </template>
+        </v-slider>
+      </v-flex>
+    </v-layout>
   </v-card>
 </template>
 
