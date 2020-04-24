@@ -1,9 +1,13 @@
 <template>
   <v-card id="box" class="pa-0 ma-1">
-    <v-tabs v-model="active_tab_id">
-      <v-tab v-for="i in tab" :key="i.id">{{i.text}}</v-tab>
-    </v-tabs>
-    <component v-bind:is="currentTabComponent"></component>
+    <v-layout column fill-height>
+      <v-tabs v-model="active_tab_id">
+        <v-tab v-for="i in tab" :key="i.id">{{i.text}}</v-tab>
+      </v-tabs>
+      <v-flex style="overflow: auto;">
+        <component v-bind:is="currentTabComponent"></component>
+      </v-flex>
+    </v-layout>
   </v-card>
 </template>
 
