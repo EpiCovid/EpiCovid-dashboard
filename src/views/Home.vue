@@ -13,7 +13,7 @@
       </v-card>
       <v-row class="pa-0 ma-0">
         <v-layout column class="pa-0 ma-0 col-2">
-          <TotalConfirmed style="height: 15%;" :data="data" />
+          <TotalConfirmed style="height: 15vh" :data="data" />
           <CasesByCountry style="max-height: 78%;height: 78%;" :data="data" />
           <LastUpdate style="height: 7%;" :data="data" />
         </v-layout>
@@ -42,7 +42,7 @@
               <TotalRecovered style="height:100%;" :data="data" />
             </v-layout>
           </v-layout>
-          <Charts style="height:40%;" :data="data" />
+          <Charts style="height:40vh;" :data="data" />
         </v-layout>
       </v-row>
     </v-layout>
