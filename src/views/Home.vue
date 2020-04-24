@@ -86,9 +86,7 @@ export default {
     fetchData: function(date = null) {
       var query = date ? "?date=" + date : ""
       fetch("https://covid-api.com/api/reports" + query)
-        .then(response => {
-          return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
           if (data.error) {
             this.error = true;
