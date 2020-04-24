@@ -24,7 +24,7 @@ export default {
   methods: {
     async fetch_tweet() {
       var url = ""
-      process.env.NODE_ENV == "development" ? url = "http://127.0.0.1:8000" : url = "https://epi-covid-server.herokuapp.com/"
+      process.env.NODE_ENV == "development" ? url = "http://127.0.0.1:8000" : url = "https://epi-covid-server.herokuapp.com"
       var keyword = "covid-19"
       fetch(url + "/twitter/" + keyword)
       .then((response) => response.json())
