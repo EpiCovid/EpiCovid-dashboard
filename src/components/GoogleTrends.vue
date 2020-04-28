@@ -20,22 +20,22 @@
 import {trends} from "@/assets/trends.js"
 
 export default {
-    name: "GoogleTrends",
-    data: function() {
-        return {
-            total: 0,
-            keyword: "Coronavirus"
-        };
-    },
-    mounted: function() {
-      this.load()
-    },
-    methods: {
-      load() {
-        const div = document.getElementById("google");
-        div.innerHTML = "";
-        trends.embed.renderExploreWidgetTo(document.getElementById("google"), "TIMESERIES", { "comparisonItem": [{ "keyword": this.keyword, "geo": "", "time": "today 3-m" }], "category": 0, "property": "" }, { "exploreQuery": "date=today%203-m&q=" + this.keyword, "guestPath": "https://trends.google.com:443/trends/embed/" });
-      }
+  name: "GoogleTrends",
+  data: function() {
+    return {
+      total: 0,
+      keyword: "Coronavirus"
+    };
+  },
+  mounted: function() {
+    this.load()
+  },
+  methods: {
+    load() {
+      const div = document.getElementById("google");
+      div.innerHTML = "";
+      trends.embed.renderExploreWidgetTo(document.getElementById("google"), "TIMESERIES", { "comparisonItem": [{ "keyword": this.keyword, "geo": "", "time": "today 3-m" }], "category": 0, "property": "" }, { "exploreQuery": "date=today%203-m&q=" + this.keyword, "guestPath": "https://trends.google.com:443/trends/embed/" });
     }
+  }
 };
 </script>
