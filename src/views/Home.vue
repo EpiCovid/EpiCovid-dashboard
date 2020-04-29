@@ -85,7 +85,9 @@ export default {
   methods: {
     fetchData: function(date = null) {
       var query = date ? "?date=" + date : ""
-      fetch("https://covid-api.com/api/reports" + query)
+      var url = ""
+      process.env.NODE_ENV == "development" ? url = "http://127.0.0.1:8000/covid/" : url = "https://epi-covid-server.herokuapp.com/covid/"
+      fetch(url + query)
         .then(response => response.json())
         .then(data => {
           if (data.error) {
