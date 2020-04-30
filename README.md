@@ -5,4 +5,4 @@
 
 This project consists of the exploitation and visualization in real time of data concerning the Covid-19 pandemic throughout the world.
 
-https://end-year-project-1.herokuapp.com/
+https://epi-covid-19.herokuapp.com/
